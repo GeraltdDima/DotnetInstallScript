@@ -17,14 +17,7 @@ cd ~/.dotnet
 tar -xzvf ./dotnet-sdk.tar.gz
 rm ./dotnet-sdk.tar.gz
 
-cliName=$(ls ~ | grep -E "\.bashrc|\.zshrc")
+echo "export DOTNET_ROOT=$HOME/.dotnet" >> ~/.zshrc
+echo "export PATH=$PATH:$HOME/.dotnet" >> ~/.zshrc
 
-if [[ $cliName != ".bashrc" && $cliName != ".zshrc" ]]; then
-    echo "Shell configuration file not found!"
-    exit 1
-fi
-
-echo "export DOTNET_ROOT=\$HOME/.dotnet" >> "$cliName"
-echo "export PATH=\$PATH:\$HOME/.dotnet" >> "$cliName"
-
-source "$cliName"
+source ~/.zshrc
